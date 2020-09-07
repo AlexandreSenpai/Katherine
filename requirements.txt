@@ -1,0 +1,4 @@
+comtypes
+SpeechRecognition
+gtts
+google-cloud-speech
