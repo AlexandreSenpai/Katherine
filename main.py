@@ -20,15 +20,13 @@ def listen_me():
                     try:
                         comando = r.recognize_google(audio_data=r.listen(mic), language='pt-br').lower()
                         yield comando
-                    except Exception as err:
+                    except sr.UnknownValueError:
                         playsound.playsound('./resources/sfx/sleep.mp3')
-                        print(err)
-            except Exception as err:
+            except sr.UnknownValueError:
                 pass
     
 if __name__ == '__main__':
 
     katherine = katherine.Bot(quiet=True)
     for comando in listen_me():
-        print(comando)
         katherine.execute(command=comando)
